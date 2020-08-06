@@ -4,7 +4,7 @@ public class MatrixCalculator {
 
     public int[][] multiplyMatrix(int[][] m1, int[][] m2) {
         //the first multiplicand must have the same no. of columns as the no. of rows in the second multiplicand
-        if (!validateForMultiplication(m1, m2))
+        if (!validate(m1, m2))
             throw new IllegalArgumentException("Matrices incompatible for multiplication");
 
         //the resultant matrix will have the same no. of rows as the first multiplicand and same np. of columns as the second multiplicand
@@ -29,20 +29,16 @@ public class MatrixCalculator {
         return m3;
     }
 
-    private boolean validateForMultiplication(int[][] m1, int[][] m2) {
+    private boolean validate(int[][] m1, int[][] m2) {
         //check no. of columns on first matrix == no. of. rows on the second matrix
-        if (m1[0].length != m2.length) return false;
+        //check columns on both matrices are all same length
+        return  (m1[0].length != m2.length) || isSameLenCols(m1) || isSameLenCols(m2);
+    }
 
-        int lenFirstRowM1 = m1[0].length;
-        for (int[] ints : m1) {
-            if (lenFirstRowM1 != ints.length) {
-                return false;
-            }
-        }
-
-        int lenFirstRowM2 = m2[0].length;
-        for (int[] ints : m2) {
-            if (lenFirstRowM2 != ints.length) {
+    private boolean isSameLenCols(int[][] m) {
+        int lenFirstRow = m[0].length;
+        for (int i = 1; i < m.length; i++) {
+            if (lenFirstRow != m[i].length) {
                 return false;
             }
         }
