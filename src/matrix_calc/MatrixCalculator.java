@@ -12,16 +12,21 @@ public class MatrixCalculator {
 
         //this resets the m1 row to multiply all the values in a given column in m2 until it has done so for all m2's columns,
         //and only then it increments
-        for (int i = 0; i < m1.length; i++) {
-            for (int j = 0; j < m1.length; j++) {
-                int m3CellVal = 0;
-                for (int k = 0; k < m2.length; k++) {
-                    m3CellVal += m1[i][k] * m2[k][j];
-                }
-                m3[i][j] = m3CellVal;
+        for (int row = 0; row < m3.length; row++) {
+            for (int col = 0; col < m3[row].length; col++) {
+                m3[row][col] = getTargetCellValue(m1, m2, row, col);
             }
         }
         return m3;
+    }
+
+    //a method with four parameters is bad, but...
+    private int getTargetCellValue(int[][] m1, int[][] m2, int row, int col) {
+        int m3CellVal = 0;
+        for (int k = 0; k < m2.length; k++) {
+            m3CellVal += m1[row][k] * m2[k][col];
+        }
+        return m3CellVal;
     }
 
     private boolean validate(int[][] m1, int[][] m2) {
