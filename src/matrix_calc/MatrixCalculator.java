@@ -10,11 +10,6 @@ public class MatrixCalculator {
         //the resultant matrix will have the same no. of rows as the first multiplicand and same np. of columns as the second multiplicand
         int[][] m3 = new int[m1.length][m2[0].length];
 
-        //1 * 1, 2 * 4, 3 * 6, 4 * 4 the sum of these gives (0:0)
-        //1 * 2, 2 * 5, 3 * 7, 4 * 3 the sum of these gives (0:1)
-        //1 * 3, 2 * 6, 3 * 8, 4 * 2 the sum of these gives (0:2)
-        //etc.
-
         //this resets the m1 row to multiply all the values in a given column in m2 until it has done so for all m2's columns,
         //and only then it increments
         for (int i = 0; i < m1.length; i++) {
@@ -32,7 +27,7 @@ public class MatrixCalculator {
     private boolean validate(int[][] m1, int[][] m2) {
         //check no. of columns on first matrix == no. of. rows on the second matrix
         //check columns on both matrices are all same length
-        return  (m1[0].length != m2.length) || isSameLenCols(m1) || isSameLenCols(m2);
+        return  m1[0].length == m2.length && isSameLenCols(m1) && isSameLenCols(m2);
     }
 
     private boolean isSameLenCols(int[][] m) {
