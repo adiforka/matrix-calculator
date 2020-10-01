@@ -32,10 +32,10 @@ public class MatrixCalculator {
     private boolean validate(int[][] m1, int[][] m2) {
         //check no. of columns on first matrix == no. of. rows on the second matrix
         //check columns on both matrices are all same length
-        return  m1[0].length == m2.length && isSameLenCols(m1) && isSameLenCols(m2);
+        return  m1[0].length == m2.length && isSameLenRows(m1) && isSameLenRows(m2);
     }
 
-    private boolean isSameLenCols(int[][] m) {
+    private boolean isSameLenRows(int[][] m) {
         int lenFirstRow = m[0].length;
         for (int i = 1; i < m.length; i++) {
             if (lenFirstRow != m[i].length) {
